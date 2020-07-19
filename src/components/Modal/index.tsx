@@ -55,7 +55,7 @@ const Modal = ({ open, onClose, children, fadeDuration = 200 }: ModalProps): JSX
   return (
     <div
       className={cn(
-        `transition-opacity ease-in duration-${fadeDuration} modal fixed h-full w-full flex items-center justify-center z-50`,
+        `transition-opacity ease-in duration-${fadeDuration} fixed h-full w-full block z-50`,
         {
           'opacity-0': !animated,
           'opacity-1': animated,
@@ -63,16 +63,20 @@ const Modal = ({ open, onClose, children, fadeDuration = 200 }: ModalProps): JSX
       )}
       role="dialog"
     >
-      <div className="modal-container bg-white mx-auto h-full w-full overflow-y-auto">
+      <div className="absolute h-full w-full bg-gray-500 opacity-25" onTouchEnd={handleOnClose} />
+      <div
+        className="relative bg-white mx-auto overflow-y-auto z-50 rounded-lg shadow-2xl"
+        style={{ width: 750, marginTop: 30 }}
+      >
         <div
-          className="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50"
+          className="absolute cursor-pointer mt-4 mr-4 z-50 top-0 right-0"
           onClick={handleOnClose}
           onKeyUp={handleOnEscapeKeyPress}
           role="button"
           tabIndex={0}
         >
           <svg
-            className="fill-current text-white"
+            className="fill-current text-red-500"
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
@@ -81,7 +85,7 @@ const Modal = ({ open, onClose, children, fadeDuration = 200 }: ModalProps): JSX
             <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" />
           </svg>
         </div>
-        <div className="h-full modal-content text-left p-8">{children}</div>
+        <div className="h-full">{children}</div>
       </div>
     </div>
   );

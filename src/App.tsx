@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Button from './components/Button';
 import Modal from './components/Modal';
+import Coupon from './components/Coupon';
 
 function App(): JSX.Element {
   const [open, setOpen] = useState(false);
@@ -11,29 +10,29 @@ function App(): JSX.Element {
   const handleOnModalClose = () => setOpen(false);
 
   return (
-    <div className="App">
-      <Modal onClose={handleOnModalClose} open={open}>
-        asdasdasd
+    <div className="h-full flex items-center justify-center">
+      <Modal onClose={handleOnModalClose} open>
+        <div className="flex w-full h-full">
+          <div className="w-6/12 h-full flex items-center justify-center">
+            <Coupon code="FSDAD" description="Free Shipping on Your +$25 Order" />
+          </div>
+          <div
+            className="w-6/12 h-full"
+            style={{
+              background:
+                'linear-gradient(90deg, rgba(244,241,222,1) 0%, rgba(242,204,143,0.5) 100%)',
+            }}
+          >
+            <Coupon
+              code="7SFU-2020-COCACOLA"
+              description="Get 75% off at Coca Cola. Offer ends on 01/02/2021 at 6:00 AM PST"
+            />
+          </div>
+        </div>
       </Modal>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.tsx</code>
-          and asdasd to reload.
-        </p>
-        <Button onClick={handleOnButtonClick} type="button">
-          Open Modalasdasdsad
-        </Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button onClick={handleOnButtonClick} type="button">
+        GET MY COUPON
+      </Button>
     </div>
   );
 }
