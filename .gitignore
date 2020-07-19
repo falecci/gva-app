@@ -1,4 +1,6 @@
 .build
 build
+public/output.css
 web_modules
 node_modules
+
