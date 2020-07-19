@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import Coupon from './components/Coupon';
+import SubscriptionForm from './components/SubscriptionForm';
 
 function App(): JSX.Element {
   const [open, setOpen] = useState(false);
@@ -11,22 +12,19 @@ function App(): JSX.Element {
 
   return (
     <div className="h-full flex items-center justify-center">
-      <Modal onClose={handleOnModalClose} open>
+      <Modal onClose={handleOnModalClose} open={open}>
         <div className="flex w-full h-full">
           <div className="w-6/12 h-full flex items-center justify-center">
             <Coupon code="FSDAD" description="Free Shipping on Your +$25 Order" />
           </div>
           <div
-            className="w-6/12 h-full"
+            className="w-6/12 h-full flex items-center justify-center"
             style={{
               background:
                 'linear-gradient(90deg, rgba(244,241,222,1) 0%, rgba(242,204,143,0.5) 100%)',
             }}
           >
-            <Coupon
-              code="7SFU-2020-COCACOLA"
-              description="Get 75% off at Coca Cola. Offer ends on 01/02/2021 at 6:00 AM PST"
-            />
+            <SubscriptionForm />
           </div>
         </div>
       </Modal>

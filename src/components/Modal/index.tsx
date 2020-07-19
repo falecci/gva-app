@@ -76,7 +76,7 @@ const Modal = ({ open, onClose, children, fadeDuration = 200 }: ModalProps): JSX
           tabIndex={0}
         >
           <svg
-            className="fill-current text-red-500"
+            className="fill-current text-blue-500"
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
