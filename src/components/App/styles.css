@@ -1,0 +1,5 @@
+@media (max-width: 750px) {
+  .dual-container {
+    flex-direction: column;
+  }
+}

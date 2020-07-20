@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useContext } from 'react';
+import React, { useState, FormEvent } from 'react';
 import cn from 'classnames';
 
 import Button from '../Button';
@@ -10,15 +10,15 @@ import Title from '../Title';
 import PendingMailIcon from '../../icons/pending-email.svg';
 import SuccessMailIcon from '../../icons/success-email.svg';
 import useFetch from '../Hooks/useFetch';
-import { DisplayContext } from '../../App';
 import { validateEmail } from '../../utils';
+
+import './styles.css';
 
 type SubscriptionResponse = {
   status: 'success' | 'failure';
 };
 
 const SubscriptionForm = (): JSX.Element => {
-  const isSmallDisplay = useContext(DisplayContext);
   const { doFetch, loading, error, retrying, data } = useFetch<SubscriptionResponse>(
     'subscription',
   );
@@ -50,21 +50,14 @@ const SubscriptionForm = (): JSX.Element => {
   };
 
   return (
-    <form
-      className={cn('w-full flex flex-col items-center px-12', {
-        'py-16': !isSmallDisplay,
-        'py-2': isSmallDisplay,
-      })}
-    >
-      {!isSmallDisplay && (
-        <img
-          src={!data ? PendingMailIcon : SuccessMailIcon}
-          alt="subscription-mail"
-          className="-mt-8 h-24 w-24"
-        />
-      )}
+    <form className="w-full flex flex-col items-center px-8 subscription-form">
+      <img
+        src={!data ? PendingMailIcon : SuccessMailIcon}
+        alt="subscription-mail"
+        className="-mt-8 h-24 w-24 email-icon"
+      />
 
-      <Title text="Join & enjoy" />
+      <Title className="form-title" text="Join & enjoy" />
 
       {data && (
         <>
@@ -89,7 +82,7 @@ const SubscriptionForm = (): JSX.Element => {
             className={cn('p-2 mt-8 w-full', {
               'border border-red-500': email.error,
             })}
-            placeholder="Enter your email address"
+            placeholder="Email address"
           />
 
           <ErrorMessage text={email.error} visible={!!email.error} />

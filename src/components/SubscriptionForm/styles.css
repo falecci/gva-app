@@ -1,0 +1,19 @@
+.subscription-form {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 750px) {
+  .email-icon {
+    display: none;
+  }
+
+  .form-title {
+    display: none;
+  }
+
+  .subscription-form {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}

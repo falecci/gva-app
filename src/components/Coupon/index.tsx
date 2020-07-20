@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import cn from 'classnames';
+import React from 'react';
 
 import Button from '../Button';
 import useCopyToClipboard from '../Hooks/useCopyToClipboard';
 import Subtitle from '../Subtitle';
 import Title from '../Title';
-import { DisplayContext } from '../../App';
+
+import './styles.css';
 
 type CodeProps = {
   code: string;
@@ -34,7 +34,7 @@ const Coupon = ({
   const handleOnCopyButtonClick = (): void => copyText(code);
 
   return (
-    <div className="w-full flex flex-col py-16">
+    <div className="w-full flex flex-col coupon-container">
       <Coupon.Info
         company={company}
         description={description}
@@ -54,40 +54,29 @@ const Coupon = ({
   );
 };
 
-Coupon.Info = ({ company, image, title, expireDate, description, url }: CouponProps) => {
-  const isSmallDisplay = useContext(DisplayContext);
+Coupon.Info = ({ company, image, title, expireDate, description, url }: CouponProps) => (
+  <>
+    <div className="w-full flex self-start pl-8 mb-4">
+      <img alt="company-logo" className="company-logo" src={image} />
 
-  return (
-    <>
-      <div className="w-full flex self-start pl-8 mb-4">
-        <img
-          alt="company-logo"
-          className={cn({
-            'w-16 h-16': isSmallDisplay,
-            'w-20 h-20': !isSmallDisplay,
-          })}
-          src={image}
-        />
+      <div className="flex flex-col ml-6 -mt-3">
+        <Title text={title} />
 
-        <div className="flex flex-col ml-6 -mt-3">
-          <Title text={title} />
-
-          <span className="text-sm">
-            Valid till <strong>{expireDate}</strong>
-          </span>
-          <span className="text-sm font-bold">
-            Visit more on{' '}
-            <a className="text-blue-600" href={url}>
-              {company}
-            </a>
-          </span>
-        </div>
+        <span className="text-sm">
+          Valid till <strong>{expireDate}</strong>
+        </span>
+        <span className="text-sm font-bold">
+          Visit more on{' '}
+          <a className="text-blue-600" href={url}>
+            {company}
+          </a>
+        </span>
       </div>
+    </div>
 
-      <Subtitle text={description} className="mb-8 px-8" />
-    </>
-  );
-};
+    <Subtitle text={description} className="mb-8 px-8" />
+  </>
+);
 
 Coupon.Code = ({ code }: CodeProps) => (
   <span className="w-8/12 border border-r-0 bg-blue-300 bg-opacity-25 border-blue-500 text-blue-700 font-bold p-2 uppercase">

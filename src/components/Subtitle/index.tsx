@@ -1,6 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
+import './styles.css';
+
 type SubtitleProps = {
   text: string;
   className?: string;
@@ -8,7 +10,7 @@ type SubtitleProps = {
 
 const Subtitle = ({ text, className }: SubtitleProps): JSX.Element => (
   <h2
-    className={cn('text-lg font-semibold', {
+    className={cn('subtitle font-semibold', {
       [className || '']: className,
     })}
   >

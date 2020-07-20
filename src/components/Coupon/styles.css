@@ -1,0 +1,21 @@
+.company-logo {
+  height: 5rem;
+  width: 5rem;
+}
+
+.coupon-container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 750px) {
+  .company-logo {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .coupon-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

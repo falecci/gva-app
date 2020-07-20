@@ -1,0 +1,15 @@
+.panel {
+  height: 100%;
+  width: 50%;
+}
+
+.background-filled {
+  background: linear-gradient(90deg, rgba(244, 241, 222, 1) 0%, rgba(242, 204, 143, 0.5) 100%);
+}
+
+@media (max-width: 750px) {
+  .panel {
+    height: auto;
+    width: 100%;
+  }
+}
