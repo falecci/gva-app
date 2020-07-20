@@ -77,9 +77,11 @@ const SubscriptionForm = (): JSX.Element => {
           />
 
           <input
+            aria-label="Email"
+            name="user-email"
             value={email.value}
             onChange={ev => setEmail({ ...email, value: ev.target.value })}
-            className={cn('p-2 mt-8 w-full', {
+            className={cn('p-2 mt-8 w-full rounded-none', {
               'border border-red-500': email.error,
             })}
             placeholder="Email address"

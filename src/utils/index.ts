@@ -3,3 +3,6 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))
 export const validateEmail = (email: string): boolean => {
   return EMAIL_REGEX.test(String(email).toLowerCase());
 };
+
+// eslint-disable-next-line
+export const noop = (): void => {};
