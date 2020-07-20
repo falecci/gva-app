@@ -62,5 +62,6 @@ That script builds a static copy of your site to the `build/` folder, and the ap
 - **For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" or "@snowpack/plugin-parcel" to your `snowpack.config.json` config file.
 - Should find a better way to configure TailwindCSS with Snowpack, to use `@apply` in style files.
 - Mobile design should be reviewed for large coupon content.
+- <Modal /> component should be using Portals.
 - Everything could have been done with vanilla JavaScript, CSS and HTML.
 - Right now, the API is mocked with [Beeceptor](https://beeceptor.com/). Unfortunately, it has a limit of 50 requests per day. However, it’s free and anyone would just need to modify the `.env` file with the new endpoint to mock success or failure responses.
