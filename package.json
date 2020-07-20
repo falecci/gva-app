@@ -1,4 +1,6 @@
 {
+  "name": "giving-assistant-app",
+  "description": "Giving Assistant App",
   "scripts": {
     "start": "yarn build:tailwind && snowpack dev",
     "build": "yarn build:tailwind && snowpack build",
@@ -41,5 +43,10 @@
     "snowpack": "^2.6.4",
     "tailwindcss": "^1.5.1",
     "typescript": "^3.8.0"
+  },
+  "author": {
+    "name": "Federico Alecci",
+    "email": "i.am@falecci.dev",
+    "url": "https://falecci.dev"
   }
 }
