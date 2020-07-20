@@ -7,13 +7,13 @@ type SubtitleProps = {
 };
 
 const Subtitle = ({ text, className }: SubtitleProps): JSX.Element => (
-  <span
-    className={cn('max-w-xs text-center text-lg font-semibold', {
+  <h2
+    className={cn('max-w-xs text-lg font-semibold', {
       [className || '']: className,
     })}
   >
     {text}
-  </span>
+  </h2>
 );
 
 export default Subtitle;

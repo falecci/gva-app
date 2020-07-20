@@ -24,6 +24,7 @@ module.exports = {
     'prettier/prettier': 'error', // We don't want ESLint to mess up with Prettier rules.
     'import/prefer-default-export': 'off', // This is rather annoying.
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', '.ts'] }], // I don't know why this is messing up things
+    'react/jsx-one-expression-per-line': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['**/*.test.ts', '**/*.test.tsx'] },

@@ -15,7 +15,12 @@ function App(): JSX.Element {
       <Modal onClose={handleOnModalClose} open={open}>
         <div className="flex w-full h-full">
           <div className="w-6/12 h-full flex items-center justify-center">
-            <Coupon code="FSDAD" description="Free Shipping on Your +$25 Order" />
+            <Coupon
+              url=""
+              title="Udemy"
+              code="FSDAD"
+              description="Free Shipping on Your +$25 Order"
+            />
           </div>
           <div
             className="w-6/12 h-full flex items-center justify-center"

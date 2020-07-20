@@ -8,6 +8,9 @@ import ErrorMessage from '../ErrorMessage';
 import Subtitle from '../Subtitle';
 import Spinner from '../Spinner';
 
+import PendingMailIcon from '../../icons/pending-email.svg';
+import SuccessMailIcon from '../../icons/success-email.svg';
+
 type SubscriptionResponse = {
   status: 'success' | 'failure';
 };
@@ -36,7 +39,7 @@ const SubscriptionForm = (): JSX.Element => {
     }
 
     if (email.value && !validateEmail(email.value)) {
-      setEmail({ ...email, error: 'You must enter a valid email adress' });
+      setEmail({ ...email, error: 'You must enter a valid email address' });
       return;
     }
 
@@ -45,18 +48,30 @@ const SubscriptionForm = (): JSX.Element => {
 
   return (
     <form className="w-full flex flex-col items-center py-16 px-12">
-      <span className="font-semibold">Hi, there</span>
+      <img
+        src={!data ? PendingMailIcon : SuccessMailIcon}
+        alt="subscription-mail"
+        className="h-24 w-24"
+      />
       <h1 className="font-extrabold text-5xl">Join & enjoy</h1>
 
-      <Subtitle
-        text="Subscribe to keep up with the greatest deals, hottest offers and latest news."
-        className="mt-2"
-      />
-
-      {data?.status === 'success' && 'YAAAAAAAAAY'}
+      {data && (
+        <>
+          <Subtitle text="Thank you so much for subscribing!" className="text-center mt-2" />
+          <Subtitle
+            text="You'll be hearing from us soon with the best offers available."
+            className="text-center mt-2"
+          />
+        </>
+      )}
 
       {!data && (
         <>
+          <Subtitle
+            text="Subscribe to keep up with the greatest deals, hottest offers and latest news."
+            className="text-center mt-2"
+          />
+
           <input
             value={email.value}
             onChange={ev => setEmail({ ...email, value: ev.target.value })}
