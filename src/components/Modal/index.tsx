@@ -5,6 +5,8 @@ import type { ChildrenProps, GenericKeyboardEvent, Nullable } from '../../types'
 
 import useWindowEventListener from '../Hooks/useWindowEventListener';
 
+import './styles.css';
+
 type ModalProps = {
   open: boolean;
   onClose: () => void;
@@ -69,10 +71,7 @@ const Modal = ({
       role="dialog"
     >
       <div className="absolute h-full w-full bg-gray-500 opacity-25" onTouchEnd={handleOnClose} />
-      <div
-        className="relative bg-white mx-auto overflow-y-auto z-50 rounded-lg shadow-2xl"
-        style={{ width: 750, marginTop: 30 }}
-      >
+      <div className="relative bg-white mx-auto overflow-y-auto z-50 rounded-lg shadow-2xl modal-content">
         <div
           className="absolute cursor-pointer mt-4 mr-4 z-50 top-0 right-0"
           onClick={handleOnClose}

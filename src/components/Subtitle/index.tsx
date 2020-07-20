@@ -8,7 +8,7 @@ type SubtitleProps = {
 
 const Subtitle = ({ text, className }: SubtitleProps): JSX.Element => (
   <h2
-    className={cn('max-w-xs text-lg font-semibold', {
+    className={cn('text-lg font-semibold', {
       [className || '']: className,
     })}
   >

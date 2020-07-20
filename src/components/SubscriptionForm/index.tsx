@@ -10,6 +10,7 @@ import Spinner from '../Spinner';
 
 import PendingMailIcon from '../../icons/pending-email.svg';
 import SuccessMailIcon from '../../icons/success-email.svg';
+import Title from '../Title';
 
 type SubscriptionResponse = {
   status: 'success' | 'failure';
@@ -53,7 +54,8 @@ const SubscriptionForm = (): JSX.Element => {
         alt="subscription-mail"
         className="h-24 w-24"
       />
-      <h1 className="font-extrabold text-5xl">Join & enjoy</h1>
+
+      <Title text="Join & enjoy" />
 
       {data && (
         <>

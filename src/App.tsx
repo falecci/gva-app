@@ -3,12 +3,20 @@ import Button from './components/Button';
 import Modal from './components/Modal';
 import Coupon from './components/Coupon';
 import SubscriptionForm from './components/SubscriptionForm';
+import type { Coupon as CouponType } from './types';
+import { getCoupon } from './data';
 
 function App(): JSX.Element {
   const [open, setOpen] = useState(false);
+  const [coupon, setCoupon] = useState<CouponType>(getCoupon());
 
-  const handleOnButtonClick = () => setOpen(true);
+  const handleOnButtonClick = () => {
+    setOpen(true);
+    setCoupon(getCoupon());
+  };
   const handleOnModalClose = () => setOpen(false);
+
+  const { company, description, url, title, code, image, expireDate } = coupon;
 
   return (
     <div className="h-full flex items-center justify-center">
@@ -16,10 +24,13 @@ function App(): JSX.Element {
         <div className="flex w-full h-full">
           <div className="w-6/12 h-full flex items-center justify-center">
             <Coupon
-              url=""
-              title="Udemy"
-              code="FSDAD"
-              description="Free Shipping on Your +$25 Order"
+              company={company}
+              code={code}
+              description={description}
+              expireDate={expireDate}
+              image={image}
+              title={title}
+              url={url}
             />
           </div>
           <div
