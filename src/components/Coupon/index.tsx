@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button';
 import useCopyToClipboard from '../Hooks/useCopyToClipboard';
+import Subtitle from '../Subtitle';
 
 type CouponProps = {
   code: string;
@@ -19,7 +20,8 @@ const Coupon = ({ code, description }: CouponProps): JSX.Element => {
         className="rounded-full w-24 h-24 mb-8"
         src="https://www.pipelinersales.com/wp-content/uploads/2019/06/large-udemy.jpg"
       />
-      <span className="max-w-xs text-center mb-8 text-lg font-semibold">{description}</span>
+
+      <Subtitle text={description} className="mb-8" />
 
       <div className="w-full flex items-center px-8">
         <span className="w-8/12 border border-r-0 bg-blue-300 bg-opacity-25 border-blue-500 text-blue-700 font-bold p-2">

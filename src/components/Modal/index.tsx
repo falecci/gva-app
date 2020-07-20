@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 
-import type { ChildrenProps, GenericKeyboardEvent } from '../../types';
+import type { ChildrenProps, GenericKeyboardEvent, Nullable } from '../../types';
 
 import useWindowEventListener from '../Hooks/useWindowEventListener';
 
@@ -13,7 +13,12 @@ type ModalProps = {
 
 const ESC_KEYS = ['Escape', 'esc'];
 
-const Modal = ({ open, onClose, children, fadeDuration = 200 }: ModalProps): JSX.Element | null => {
+const Modal = ({
+  open,
+  onClose,
+  children,
+  fadeDuration = 200,
+}: ModalProps): Nullable<JSX.Element> => {
   const [animated, setAnimated] = useState(false);
   const [visible, setVisible] = useState(false);
 

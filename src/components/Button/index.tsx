@@ -13,11 +13,14 @@ const Button = ({ children, type, onClick, filled, className }: ButtonProps): JS
   return (
     <button
       onClick={onClick}
-      className={cn('focus:outline-none p-2 border border-blue-500 font-bold pointer', {
-        'text-blue-700 hover:text-white hover:bg-blue-500': !filled,
-        'text-white bg-blue-500': filled,
-        [className || '']: className,
-      })}
+      className={cn(
+        'flex items-center justify-center focus:outline-none p-2 border border-blue-500 font-bold pointer',
+        {
+          'text-blue-700 hover:text-white hover:bg-blue-500': !filled,
+          'text-white bg-blue-500': filled,
+          [className || '']: className,
+        },
+      )}
       // eslint-disable-next-line react/button-has-type
       type={type}
     >

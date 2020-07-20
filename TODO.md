@@ -19,10 +19,10 @@
 # Subscription
 
 - [ ] Image icon that represents an email subscription form.
-- [ ] Title for email subscription form.
-- [ ] Text highlighting the benefits of subscribing.
-- [ ] Text box for user’s email address.
-- [ ] Button that submits the form.
-- [ ] POST request to an api endpoint.
+- [x] Title for email subscription form.
+- [x] Text highlighting the benefits of subscribing.
+- [x] Text box for user’s email address.
+- [x] Button that submits the form.
+- [x] POST request to an api endpoint.
 - [ ] Success or errors are reflected on form.
-- [ ] BONUS: add retries upon failure up to 2 times. Throttle each retry.
+- [x] BONUS: add retries upon failure up to 2 times. Throttle each retry.

@@ -3,18 +3,44 @@ import cn from 'classnames';
 
 import { validateEmail } from '../../utils';
 import Button from '../Button';
+import useFetch from '../Hooks/useFetch';
+import ErrorMessage from '../ErrorMessage';
+import Subtitle from '../Subtitle';
+import Spinner from '../Spinner';
+
+type SubscriptionResponse = {
+  status: 'success' | 'failure';
+};
 
 const SubscriptionForm = (): JSX.Element => {
-  const [email, setEmail] = useState('');
-  const [hasErrors, setHasErrors] = useState(false);
+  const { doFetch, loading, error, retrying, data } = useFetch<SubscriptionResponse>(
+    'subscription',
+  );
+  const [email, setEmail] = useState({
+    value: '',
+    error: '',
+  });
 
   const handleOnSubmit = (evt: FormEvent) => {
     evt.preventDefault();
-    setHasErrors(false);
 
-    if (!email || (email && !validateEmail(email))) {
-      setHasErrors(true);
+    if (loading || retrying) {
+      return;
     }
+
+    setEmail({ ...email, error: '' });
+
+    if (!email.value) {
+      setEmail({ ...email, error: 'You must enter your email' });
+      return;
+    }
+
+    if (email.value && !validateEmail(email.value)) {
+      setEmail({ ...email, error: 'You must enter a valid email adress' });
+      return;
+    }
+
+    doFetch({ body: { email }, method: 'POST' });
   };
 
   return (
@@ -22,22 +48,38 @@ const SubscriptionForm = (): JSX.Element => {
       <span className="font-semibold">Hi, there</span>
       <h1 className="font-extrabold text-5xl">Join & enjoy</h1>
 
-      <span className="text-center mt-2 font-semibold">
-        Subscribe to keep up with the greatest deals, hottest offers and latest news.
-      </span>
-
-      <input
-        value={email}
-        onChange={ev => setEmail(ev.target.value)}
-        className={cn('p-2 mt-8 w-full', {
-          'border border-red-500': hasErrors,
-        })}
-        placeholder="Enter your email address"
+      <Subtitle
+        text="Subscribe to keep up with the greatest deals, hottest offers and latest news."
+        className="mt-2"
       />
 
-      <Button onClick={handleOnSubmit} filled className="w-full mt-4" type="submit">
-        Subscribe
-      </Button>
+      {data?.status === 'success' && 'YAAAAAAAAAY'}
+
+      {!data && (
+        <>
+          <input
+            value={email.value}
+            onChange={ev => setEmail({ ...email, value: ev.target.value })}
+            className={cn('p-2 mt-8 w-full', {
+              'border border-red-500': email.error,
+            })}
+            placeholder="Enter your email address"
+          />
+
+          <ErrorMessage text={email.error} visible={!!email.error} />
+
+          <Button onClick={handleOnSubmit} filled className="w-full mt-4" type="submit">
+            {loading ? <Spinner /> : 'Subscribe'}
+          </Button>
+
+          <ErrorMessage
+            visible={retrying}
+            text="Oops! We are having some issues. Hang on a bit and we'll fix them for you!"
+          />
+
+          <ErrorMessage visible={error} text="We can't subscribe you right now :(" />
+        </>
+      )}
     </form>
   );
 };
