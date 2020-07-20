@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import cn from 'classnames';
 
 import type { ChildrenProps, GenericKeyboardEvent, Nullable } from '../../types';
@@ -6,6 +6,7 @@ import type { ChildrenProps, GenericKeyboardEvent, Nullable } from '../../types'
 import useWindowEventListener from '../Hooks/useWindowEventListener';
 
 import './styles.css';
+import { DisplayContext } from '../../App';
 
 type ModalProps = {
   open: boolean;
@@ -21,6 +22,7 @@ const Modal = ({
   children,
   fadeDuration = 200,
 }: ModalProps): Nullable<JSX.Element> => {
+  const isSmallDisplay = useContext(DisplayContext);
   const [animated, setAnimated] = useState(false);
   const [visible, setVisible] = useState(false);
 
@@ -71,7 +73,15 @@ const Modal = ({
       role="dialog"
     >
       <div className="absolute h-full w-full bg-gray-500 opacity-25" onTouchEnd={handleOnClose} />
-      <div className="relative bg-white mx-auto overflow-y-auto z-50 rounded-lg shadow-2xl modal-content">
+      <div
+        className={cn(
+          'relative h-full bg-white mx-auto overflow-y-auto z-50 rounded-lg shadow-2xl modal',
+          {
+            'modal-desktop': !isSmallDisplay,
+            'modal-mobile': isSmallDisplay,
+          },
+        )}
+      >
         <div
           className="absolute cursor-pointer mt-4 mr-4 z-50 top-0 right-0"
           onClick={handleOnClose}
