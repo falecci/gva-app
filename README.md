@@ -63,3 +63,4 @@ That script builds a static copy of your site to the `build/` folder, and the ap
 - Should find a better way to configure TailwindCSS with Snowpack, to use `@apply` in style files.
 - Mobile design should be reviewed for large coupon content.
 - Everything could have been done with vanilla JavaScript, CSS and HTML.
+- Right now, the API is mocked with [Beeceptor](https://beeceptor.com/). Unfortunately, it has a limit of 50 requests per day. However, it’s free and anyone would just need to modify the `.env` file with the new endpoint to mock success or failure responses.
